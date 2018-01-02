@@ -1,0 +1,165 @@
+body,html {
+	margin: 0px;
+	padding: 5px;
+	height: 100%;
+	background: url(images/bg5.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color: #111 !important;
+  }
+  
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 30px;
+}
+
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ---------------------------- */
+
+	div.mainContainer {
+		height: 100%;
+		max-width: 1280px;
+		margin: auto;
+		text-align: center;
+		box-sizing: border-box;
+	}
+
+
+
+
+
+	.contentBlock{
+		margin: 10px auto;
+		width: 100%;
+
+		box-sizing: border-box;
+	}
+
+
+	.coinNameBlock {
+		background: #000;
+		border-radius:3px;
+		border:1px solid #111;
+		display:inline-block;
+		cursor:pointer;
+		color:#fff !important;
+		text-align: left;
+		padding:6px 24px;
+		text-decoration:none;
+		width: 100%;
+		min-width: 335px;
+		opacity: 0.6;
+	}
+	.coinNameBlock:hover {
+		background: #111;
+	}
+
+	.well{
+		background:#000;
+		padding : .2em !important;
+		margin-bottom: 2px !important;
+		background-image: -webkit-linear-gradient(top, #333 0%, #333 100%) !important;
+		background-image: -o-linear-gradient(top, #333 0%, #333 100%) !important;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#333), to(#333)) !important;
+		background-image: linear-gradient(to bottom, #333 0%, #333 100%) !important;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333', endColorstr='#333', GradientType=0) !important;
+		background-repeat: repeat-x;
+		border-color : #000 !important;
+		width: 100%;
+		position: relative;
+		float: right;
+	}
+
+  .wellContainer{
+		text-align: right;
+		color: #fff!important;
+		font-size: .9em;
+		background: #141414 !important;
+	}
+	
+	.coinLeftBlock{
+		float: left;
+	}
+	.coinRightBlock{
+		float: right;
+	}
+	.coinRightBlock div{
+		display: inline-block;
+	}
+
+	.currencyValueBlock{
+			margin-right: 1.2em;
+	}
+
+	.colorStatusBlock{
+		background-color: red;
+		width: 4.6em;
+		text-align: center;
+		border-radius: 3px;
+		color: #fff;
+		font-size: 1em;
+	}
+
+	.defaultExchange{
+		font-size: .7em;
+		color:#ccc;
+		text-align: right;
+	}
+
+	.exchangeContainer{
+		width: 100%;
+
+		border : 1px solid #333;
+	}
+
+	.exchangeBlock{
+			display: inline-block;
+			width: 30%;
+			margin-left: .5em;
+			padding: 3px 0 3px 10px;
+	}
+
+ 
+  
+.footerBlock{
+	color: #fff;
+	font-size: .7em;
+	border: 1px solid #000;
+	margin: 10px auto;
+	padding: 1em;
+	width: 100%;
+	background:rgb(0, 0, 0);
+	position:absolute;
+	bottom:0;
+	right:0;
+	opacity: 0.3;
+
+}
+
+
+.coinBlock {
+	float:left;
+	width:50%;/*The width is 60%, by default*/
+  }
+  .infoBlock {
+	float:left;
+	width:50%;/*The width is 20%, by default*/
+  }
+  
+  /*Use a media query to add a break point at 800px:*/
+  @media (max-width:800px) {
+	.coinBlock, .infoBlock {
+	  width:100%;/*The width is 100%, when the viewport is 800px or smaller*/
+	}
+  }
+
+
+
