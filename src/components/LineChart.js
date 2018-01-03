@@ -34,7 +34,7 @@ class LineChart extends Component{
     }
 
     getMaxX(){
-        const {data} = this.props;
+        //const {data} = this.props;
         return data[data.length - 1].x;
     }
 

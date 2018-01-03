@@ -2,7 +2,7 @@ body,html {
 	margin: 0px;
 	padding: 5px;
 	height: 100%;
-	background: url(images/bg5.jpg) no-repeat center center fixed; 
+	background: url(images/bg6.jpg) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -25,24 +25,19 @@ body,html {
 /* ---------------------------- */
 
 	div.mainContainer {
-		height: 100%;
+		height: 600px;
 		max-width: 1280px;
 		margin: auto;
 		text-align: center;
 		box-sizing: border-box;
+		overflow: scroll;
 	}
-
-
-
-
 
 	.contentBlock{
 		margin: 10px auto;
 		width: 100%;
-
 		box-sizing: border-box;
 	}
-
 
 	.coinNameBlock {
 		background: #000;
@@ -95,9 +90,10 @@ body,html {
 		display: inline-block;
 	}
 
-	.currencyValueBlock{
-			margin-right: 1.2em;
+	.currencyValueBlock, .currencyValueBlock span{
+		margin-right: 1.2em;
 	}
+
 
 	.colorStatusBlock{
 		background-color: red;
@@ -107,6 +103,25 @@ body,html {
 		color: #fff;
 		font-size: 1em;
 	}
+
+	.greenStatus{
+		background-color: green;
+		width: 4.6em;
+		text-align: center;
+		border-radius: 3px;
+		color: #fff;
+		font-size: 1em;
+	}
+
+	.redStatus{
+		background-color: red;
+		width: 4.6em;
+		text-align: center;
+		border-radius: 3px;
+		color: #fff;
+		font-size: 1em;
+	}
+
 
 	.defaultExchange{
 		font-size: .7em;
@@ -148,6 +163,8 @@ body,html {
 .coinBlock {
 	float:left;
 	width:50%;/*The width is 60%, by default*/
+	height: 385px;
+    overflow: scroll;
   }
   .infoBlock {
 	float:left;

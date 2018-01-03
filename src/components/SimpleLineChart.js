@@ -12,7 +12,21 @@ class SimpleLineChart extends Component{
 				color : '#FFFFFF'
 			}
         };
-      }
+	  }
+	  
+	  makePath() {
+		const {data, color} = this.props;
+		let pathD = "M " + this.getSvgX(data[0].x) + " " + this.getSvgY(data[0].y) + " ";
+	
+		pathD += data.map((point, i) => {
+		  return "L " + this.getSvgX(point.x) + " " + this.getSvgY(point.y) + " ";
+		});
+	
+		return (
+		  <path className="linechart_path" d={pathD} style={{stroke: color}} />
+		);
+	  }
+	  
     render(){
         const gsmData = [
 			{
@@ -34,7 +48,7 @@ class SimpleLineChart extends Component{
 				"SHem": -4
 			}
         ];
-        console.log("LineChart : ", gsmData);
+        //console.log("LineChart : ", gsmData);
         const gsmFlat = parseFlatArray(gsmData, "Year", ["Glob", "NHem", "SHem"]);
 		return(
             <div>
@@ -44,7 +58,9 @@ class SimpleLineChart extends Component{
 					showLegends
                     legendPosition="top-right"
 					data={gsmFlat}
-					margin={{top: 20, left: 120, bottom: 20}}
+					onPointHover={(obj) => `x: ${obj.x}<br />y: ${obj.y}`}
+					margin={{top: 10, left: 120, bottom: 10}}
+					color={'#ffffff'}
                 />		
 			</div>
         )

@@ -22,13 +22,16 @@ export default class CollapsibleBlock extends Component{
             exchangeBlocks = this.props.coin.exchanges.map((thisExchange, index) => {
                 return (
                     <div className="exchangeContainer" key={index}>
-                        <div className="exchangeBlock"> {thisExchange.name}</div>
+                        <div className="exchangeBlock"> {thisExchange.name}({thisExchange.quoteAsset})</div>
                         <div className="exchangeBlock"> ${thisExchange.usdValue}</div>
-                        <div className="exchangeBlock"> {thisExchange.statusValue}%</div>
+                        <div className="exchangeBlock"> {thisExchange.percentValue}%</div>
                     </div>
                 )
             })
         }
+        console.log("percentValue ", this.props.coin.maxValueExchange.percentValue)
+        let statusButton = (parseFloat(this.props.coin.maxValueExchange.percentValue) > 0) ? "greenStatus" : "redStatus";
+            
         return(
             <div>
                 <div className="coinNameBlock" onClick={ ()=> this.setState({ open: !this.state.open })}> 
@@ -37,9 +40,11 @@ export default class CollapsibleBlock extends Component{
                     </div>
                     <div className="coinRightBlock"> 
                         <div className="currencyValueBlock">
-                        <span className="defaultExchange">{this.props.coin.defaultExchange}</span> ${this.props.coin.usdValue} </div>
-                        <div className="colorStatusBlock"> 
-                            <span>{this.props.coin.statusValue}%</span>
+                            <span className="defaultExchange">{this.props.coin.maxValueExchange.name}({this.props.coin.maxValueExchange.quoteAsset})</span> 
+                            ${this.props.coin.maxValueExchange.usdValue} 
+                        </div>
+                        <div className={statusButton}> 
+                            <span>{this.props.coin.maxValueExchange.percentValue}%</span>
                         </div>
                     </div>
                 </div>

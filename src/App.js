@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './images/coin.jpg';
-//import logo from './logo.svg';
+//import logo from './images/coin.jpg';
+import logo from './logo.svg';
 import './App.css';
 
 import CoinList from './components/CoinList';

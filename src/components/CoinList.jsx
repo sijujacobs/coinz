@@ -22,12 +22,12 @@ class CoinList extends Component{
 
     
 
-    shouldComponentUpdate(nextProps, nextState) {
-        //console.log("Should Update thisProps :: " , this.props);
-        //console.log("Should Update :: " , nextProps);
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     //console.log("Should Update thisProps :: " , this.props);
+    //     //console.log("Should Update :: " , nextProps);
         
-        return (this.props.coins.length !== nextProps.coins.coins.length)
-    }
+    //     return (this.props.coins.length !== nextProps.coins.coins.length)
+    // }
 
     onCoinClick(selectedCoin){
         console.log("Selected Coin : ", selectedCoin);
@@ -51,8 +51,8 @@ class CoinList extends Component{
 
     render(){
         //   <LineChart data={this.createChartData()} color={'#F44336'}   /> 
-//console.log("thisProps : ", this.props);
-        var propsCoins = this.props.coins;
+
+        var propsCoins = this.props;
         console.log("propsCoins : ", propsCoins);
         let coinBlocks = [];
         if(propsCoins.coins){
@@ -81,7 +81,7 @@ class CoinList extends Component{
 const mapStateToProps = (state) => {
     console.log("MapStateToProps : ", state);
     return {
-        coins : state.coins
+        coins : state.coins.coins
     }
 }
 const mapDispatchToProps = (dispatch) => {
