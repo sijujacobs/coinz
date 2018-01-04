@@ -20,30 +20,40 @@ export default class CollapsibleBlock extends Component{
         let exchangeBlocks = [];
         if(this.props.coin.exchanges){
             exchangeBlocks = this.props.coin.exchanges.map((thisExchange, index) => {
+                //console.log("percentValue ", thisExchange.percentValue)
+                let statusLabel = (parseFloat(thisExchange.percentValue) > 0) ? "greenStatus" : "redStatus";
                 return (
-                    <div className="exchangeContainer" key={index}>
-                        <div className="exchangeBlock"> {thisExchange.name}({thisExchange.quoteAsset})</div>
-                        <div className="exchangeBlock"> ${thisExchange.usdValue}</div>
-                        <div className="exchangeBlock"> {thisExchange.percentValue}%</div>
+                    <div key={index} className="coinNameBlock" > 
+                        <div className="coinLeftBlock"> 
+                            <span></span> 
+                        </div>
+                        <div className="coinRightBlock"> 
+                            <div className="currencyValueBlock">
+                                <span className="defaultExchange">{thisExchange.name}({thisExchange.quoteAsset})</span> 
+                                ${thisExchange.usdValue} 
+                            </div>
+                            <div className={"colorStatusBlock " + statusLabel}> 
+                                <span>{thisExchange.percentValue}%</span>
+                            </div>
+                        </div>
                     </div>
                 )
             })
         }
-        console.log("percentValue ", this.props.coin.maxValueExchange.percentValue)
         let statusButton = (parseFloat(this.props.coin.maxValueExchange.percentValue) > 0) ? "greenStatus" : "redStatus";
             
         return(
             <div>
                 <div className="coinNameBlock" onClick={ ()=> this.setState({ open: !this.state.open })}> 
                     <div className="coinLeftBlock"> 
-                        <span>{this.props.coin.name}({this.props.coin.code}) :</span> 
+                        <span>{this.props.coin.code} </span> 
                     </div>
                     <div className="coinRightBlock"> 
                         <div className="currencyValueBlock">
                             <span className="defaultExchange">{this.props.coin.maxValueExchange.name}({this.props.coin.maxValueExchange.quoteAsset})</span> 
                             ${this.props.coin.maxValueExchange.usdValue} 
                         </div>
-                        <div className={statusButton}> 
+                        <div className={"colorStatusBlock " + statusButton}> 
                             <span>{this.props.coin.maxValueExchange.percentValue}%</span>
                         </div>
                     </div>

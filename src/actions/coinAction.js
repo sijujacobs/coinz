@@ -4,8 +4,6 @@ import {data} from '../data/coins';
 import axios from 'axios';
 
 const baseUrl = 'https://jsonplaceholder.typicode.com/users';
-//const baseUrl = 'https://jsonplaceholder.typicode.com/photos'
-//const baseUrl = 'https://www.cryptocompare.com/api/data/coinlist/';
 
 	export const fetchCoinsSuccess = (coins) => {
 		return {
@@ -28,18 +26,24 @@ const baseUrl = 'https://jsonplaceholder.typicode.com/users';
 
 
 	const dataFormatter = (rawData) => {
-		console.log("Data From Server : ", rawData);
+		//console.log("Data From Server : ", rawData);
 		var coinData = [];
 		for( var indCoin in rawData ) {
-			var thisRawObj = rawData[indCoin];
-			//console.log("thisRawObj : ", thisRawObj);
-			const maxValueExchange = thisRawObj.exchanges.reduce(function(prev, current) {
+			let thisRawObj = rawData[indCoin];
+			let maxValueExchange = thisRawObj.exchanges.reduce(function(prev, current) {
 				return (prev.usdValue > current.usdValue) ? prev : current
 			}) 
+			let filteredExchanges = thisRawObj.exchanges.filter((thisExchange) => { 
+				if (thisExchange.quoteAsset !== maxValueExchange.quoteAsset ) {
+					return thisExchange
+				}
+				return false;
+			} );
+
 			var coinObject = {
 				code : thisRawObj.code,
 				maxValueExchange : maxValueExchange,
-				exchanges : thisRawObj.exchanges
+				exchanges : filteredExchanges
 			}
 			
 			coinData.push(coinObject);

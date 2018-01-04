@@ -10,50 +10,33 @@ class CoinList extends Component{
     constructor() {
         super();
         this.state = {
+            serviceTimer: null,
             open: true
         };
-
-        
-      }
+    }
 
     componentDidMount(){
         this.props.fetchCoins();
+        let serviceTimer = setInterval(this.nodeServiceTicker.bind(this), 70000);
+        this.setState({serviceTimer});
     }
 
+    componentWillUnmount() {
+        this.clearInterval(this.state.serviceTimer);
+    }
+    
+    nodeServiceTicker() {
+        var today = new Date();
+        var currentTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+
+        console.log("nodeServiceTicker : " , currentTime);
+        this.props.fetchCoins();
+    }
     
 
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     //console.log("Should Update thisProps :: " , this.props);
-    //     //console.log("Should Update :: " , nextProps);
-        
-    //     return (this.props.coins.length !== nextProps.coins.coins.length)
-    // }
-
-    onCoinClick(selectedCoin){
-        console.log("Selected Coin : ", selectedCoin);
-    }
-
-    createChartData(){
-		// This function creates data that doesn't look entirely random
-		const data = []
-		for (let x = 0; x <= 10; x++) {
-            const random = Math.random();
-            const temp = data.length > 0 ? data[data.length-1].y : 50;
-            const y = random >= .45 ? temp + Math.floor(random * 20) : temp - Math.floor(random * 20);
-            data.push({x,y})
-          }
-          return data;
-        // this.setState({
-        //     chartData : data
-        // })
-        
-    }
 
     render(){
-        //   <LineChart data={this.createChartData()} color={'#F44336'}   /> 
-
         var propsCoins = this.props;
-        console.log("propsCoins : ", propsCoins);
         let coinBlocks = [];
         if(propsCoins.coins){
             coinBlocks = propsCoins.coins.map((thisCoin, index) => {
@@ -68,7 +51,7 @@ class CoinList extends Component{
                     <div>{coinBlocks}</div>
                 </div>
                 <div className="infoBlock">
-                <SimpleLineChart   />
+                    <SimpleLineChart   />
 
                 </div>
             </div>
@@ -79,7 +62,6 @@ class CoinList extends Component{
 
 
 const mapStateToProps = (state) => {
-    console.log("MapStateToProps : ", state);
     return {
         coins : state.coins.coins
     }
